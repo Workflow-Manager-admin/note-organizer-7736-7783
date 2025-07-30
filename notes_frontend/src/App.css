@@ -1,0 +1,351 @@
+:root {
+  --color-primary: #1976d2;
+  --color-secondary: #424242;
+  --color-accent: #ff9800;
+
+  --bg-primary: #fafcff;
+  --bg-secondary: #f5f6f9;
+
+  --sidebar-bg: #fff;
+  --sidebar-border: #e9ecef;
+
+  --text-primary: #202020;
+  --text-muted: #888;
+  --border-color: #e9ecef;
+
+  --button-bg: #1976d2;
+  --button-accent: #ff9800;
+  --button-secondary: #424242;
+}
+
+body,
+.NotesApp__root {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.NotesApp__container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.NotesApp__sidebar {
+  width: 210px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.NotesApp__sidebarHeader {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  padding: 24px 0 12px 26px;
+  letter-spacing: 0.02em;
+}
+
+.NotesApp__sidebarNav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 0 0 6px;
+}
+.NotesApp__sidebarBtn {
+  background: transparent;
+  outline: none;
+  border: none;
+  border-left: 3.5px solid transparent;
+  border-radius: 0 8px 8px 0;
+  text-align: left;
+  padding: 9px 20px 9px 20px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1px;
+  transition: background .12s, border-left .2s;
+}
+.NotesApp__sidebarBtn.active,
+.NotesApp__sidebarBtn:hover {
+  background: #f2f9ff;
+  border-left: 3.5px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+.NotesApp__sidebarFooter {
+  padding: 8px 8px 16px 18px;
+}
+.NotesApp__newBtn {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+}
+.NotesApp__newBtn:hover {
+  background: #ffa733;
+}
+
+/* Main area layout */
+.NotesApp__main {
+  flex: 3 1 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-primary);
+  height: 100vh;
+}
+.NotesApp__topbar {
+  padding: 20px 24px 10px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.NotesApp__search {
+  width: 260px;
+  font-size: 1rem;
+  padding: 7px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: var(--text-primary);
+  transition: border 0.14s;
+}
+.NotesApp__search:focus {
+  border: 1.5px solid var(--color-primary);
+}
+
+.NotesApp__contentArea {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.NotesApp__notesList {
+  width: 290px;
+  background: var(--bg-secondary);
+  border-right: 1.5px solid var(--border-color);
+  overflow-y: auto;
+  padding: 0;
+}
+.NotesApp__notesListEmpty {
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.01rem;
+}
+.NotesApp__noteListItem {
+  padding: 18px 19px 12px 22px;
+  cursor: pointer;
+  transition: background 0.13s;
+  border-left: 4px solid transparent;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 2px;
+}
+.NotesApp__noteListItem.selected,
+.NotesApp__noteListItem:hover {
+  background: #eaf1fc;
+  border-left: 4px solid var(--color-primary);
+}
+.NotesApp__noteListTitle {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
+}
+.NotesApp__noteListCat {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  margin-top: 4px;
+}
+
+/* Editor/Viewer pane */
+.NotesApp__editor {
+  flex: 1 1 0;
+  padding: 32px 34px;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.NotesApp__editorForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: inherit;
+}
+
+.NotesApp__editorTitle,
+.NotesApp__editorCategory,
+.NotesApp__editorTextarea {
+  width: 100%;
+  font-size: 1.3rem;
+  font-family: inherit;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  outline: none;
+  border-radius: 7px;
+  border: 1.3px solid var(--border-color);
+  background: #fbfcfd;
+  color: var(--text-primary);
+  transition: border .15s;
+}
+.NotesApp__editorTitle:focus,
+.NotesApp__editorTextarea:focus,
+.NotesApp__editorCategory:focus {
+  border: 1.3px solid var(--color-primary);
+}
+
+.NotesApp__editorTitle {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.NotesApp__editorTextarea {
+  resize: vertical;
+  font-size: 1.02rem;
+  min-height: 120px;
+  max-height: 340px;
+}
+
+.NotesApp__editorActions {
+  display: flex;
+  gap: 14px;
+  margin-top: 7px;
+}
+
+/* Buttons in actions */
+.NotesApp__actionBtn {
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  padding: 9px 19px;
+  font-weight: 500;
+  font-size: 1.07rem;
+  cursor: pointer;
+  transition: background .17s, opacity .12s;
+}
+.NotesApp__actionBtn.primary {
+  background: var(--button-bg);
+}
+.NotesApp__actionBtn.accent {
+  background: var(--button-accent);
+}
+.NotesApp__actionBtn.secondary {
+  background: var(--button-secondary);
+}
+.NotesApp__actionBtn:hover {
+  opacity: 0.88;
+}
+
+/* Note viewer styles */
+.NotesApp__viewer {
+  width: 100%;
+  background: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.NotesApp__viewerHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+.NotesApp__viewerTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
+}
+.NotesApp__viewerCat {
+  background: #e3e3e3;
+  color: var(--color-secondary);
+  font-size: .98rem;
+  padding: 3.5px 14px;
+  border-radius: 6px;
+}
+.NotesApp__viewerContent {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #192128;
+  margin-bottom: 18px;
+  white-space: pre-line;
+}
+.NotesApp__viewerActions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Empty state */
+.NotesApp__emptyState {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-top: 50px;
+}
+
+@media (max-width: 880px) {
+  .NotesApp__container {
+    flex-direction: column;
+  }
+  .NotesApp__sidebar {
+    width: 100vw;
+    flex-direction: row;
+    border-bottom: 1px solid var(--sidebar-border);
+    border-right: none;
+    overflow-x: auto;
+  }
+  .NotesApp__main {
+    min-width: 0;
+    height: auto;
+  }
+  .NotesApp__contentArea {
+    flex-direction: column;
+  }
+  .NotesApp__notesList {
+    width: 100vw;
+    border-right: none;
+    border-bottom: 1.5px solid var(--border-color);
+    min-height: 80px;
+  }
+  .NotesApp__editor {
+    padding: 24px 2vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .NotesApp__container {
+    min-height: unset;
+  }
+  .NotesApp__sidebarHeader {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .NotesApp__contentArea {
+    flex-direction: column;
+  }
+  .NotesApp__editor {
+    padding: 13px 1.5vw;
+  }
+}
